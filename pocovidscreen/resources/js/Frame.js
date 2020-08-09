@@ -21,6 +21,8 @@ const ScreenResults = lazy(() => import('./pages/Screen/ScreenResults'));
 const TrainResult = lazy(() => import('./pages/Train/TrainResult'));
 const About = lazy(() => import('./pages/About/About'));
 const Terms = lazy(() => import('./pages/About/Terms'));
+const ScreenVideo = lazy(() => import('./pages/Screen/ScreenVideo'))
+const ScreenVideoResult = lazy(() => import('./pages/Screen/ScreenVideoResult'))
 const LoadingMessage = () => ``;
 
 const Frame = () => {
@@ -83,6 +85,8 @@ const Frame = () => {
                         <Route exact path="/train" alertMessage="You need to sign in before to train." component={() => <Train/>}/>
                         <Route exact path="/screen" alertMessage="You need to sign in before to screen." component={() => <Screen/>}/>
                         <Route exact path="/screen/results" component={() => <ScreenResults/>}/>
+                        <Route exact path="/screen_video" component={() => <ScreenView/>}/>
+                        <Route exact path="/screen_video/results" component={() => <ScreenVideoResult/>}/>
                         <Route exact path="/train/result" component={() => <TrainResult/>}/>
                         <Route exact path="/about" component={() => <About/>}/>
                         <Route exact path="/sign-in" component={() => <SignIn/>}/>

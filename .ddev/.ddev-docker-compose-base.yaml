@@ -5,11 +5,11 @@ services:
   db:
     container_name: ddev-${DDEV_SITENAME}-db
     build:
-      context: '/Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/db-build'
-      dockerfile: '/Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/.dbimageBuild/Dockerfile'
+      context: '/Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/db-build'
+      dockerfile: '/Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/.dbimageBuild/Dockerfile'
       args:
         BASE_IMAGE: $DDEV_DBIMAGE
-        username: 'jroulin'
+        username: 'vijaydaita'
         uid: '501'
         gid: '20'
     image: ${DDEV_DBIMAGE}-${DDEV_SITENAME}-built
@@ -49,11 +49,11 @@ services:
   web:
     container_name: ddev-${DDEV_SITENAME}-web
     build:
-      context: '/Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/web-build'
-      dockerfile: '/Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/.webimageBuild/Dockerfile'
+      context: '/Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/web-build'
+      dockerfile: '/Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/.webimageBuild/Dockerfile'
       args:
         BASE_IMAGE: $DDEV_WEBIMAGE
-        username: 'jroulin'
+        username: 'vijaydaita'
         uid: '501'
         gid: '20'
     image: ${DDEV_WEBIMAGE}-${DDEV_SITENAME}-built

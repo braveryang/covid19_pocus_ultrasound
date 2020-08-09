@@ -48,7 +48,7 @@ const ScreenVideo = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         history.push({
-            pathname: '/screen/results',
+            pathname: '/screen_video/results',
             state: {files: files}
         })
     };

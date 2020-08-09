@@ -10,12 +10,12 @@ import string
 import random
 import numpy as np
 
-# model = Evaluator(
-#     weights_dir="../trained_models_cam",
-#     ensemble=True,
-#     model_id="vgg_cam",
-#     num_classes=4
-# )
+model = Evaluator(
+    weights_dir="../trained_models_cam",
+    ensemble=True,
+    model_id="vgg_cam",
+    num_classes=4
+)
 videoModel = VideoEvaluator(
     weights_dir="../trained_models_cam",
     ensemble=True,

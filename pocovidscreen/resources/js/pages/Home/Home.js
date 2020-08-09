@@ -33,7 +33,7 @@ const Home = () => {
 
     const showDisclaimerModalVideo = () => {
         if (context.disclaimerAccepted) {
-            history.push('/screenvideo');
+            history.push('/screen_video');
         } else {
             setModalOpened(true);
         }

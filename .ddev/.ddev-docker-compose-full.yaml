@@ -9,15 +9,15 @@ services:
         BASE_IMAGE: drud/ddev-dbserver-mariadb-10.2:v1.14.1
         gid: '20'
         uid: '501'
-        username: jroulin
-      context: /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/db-build
-      dockerfile: /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/.dbimageBuild/Dockerfile
+        username: vijaydaita
+      context: /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/db-build
+      dockerfile: /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/.dbimageBuild/Dockerfile
     command: ''
     container_name: ddev-covidscreen-db
     environment:
-      COLUMNS: '0'
+      COLUMNS: '225'
       DDEV_PROJECT: covidscreen
-      LINES: '0'
+      LINES: '17'
       TZ: ''
     healthcheck:
       interval: 1s
@@ -28,17 +28,17 @@ services:
     image: drud/ddev-dbserver-mariadb-10.2:v1.14.1-covidscreen-built
     labels:
       com.ddev.app-type: php
-      com.ddev.approot: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      com.ddev.approot: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       com.ddev.platform: ddev
       com.ddev.site-name: covidscreen
     ports:
-    - 127.0.0.1::3306/tcp
+    - 127.0.0.1:32769:3306/tcp
     restart: "no"
     stop_grace_period: 60s
     user: '501:20'
     volumes:
     - ddev-global-cache:/mnt/ddev-global-cache:rw
-    - source: /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev
+    - source: /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev
       target: /mnt/ddev_config
       type: bind
     - source: mariadb-database
@@ -63,7 +63,7 @@ services:
     image: phpmyadmin/phpmyadmin:5
     labels:
       com.ddev.app-type: php
-      com.ddev.approot: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      com.ddev.approot: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       com.ddev.platform: ddev
       com.ddev.site-name: covidscreen
     links:
@@ -73,17 +73,17 @@ services:
     restart: "no"
   pocovidnet:
     build:
-      context: /Users/jroulin/Dev/covid19_pocus_ultrasound/pocovidnet
+      context: /Users/vijaydaita/Files/covid19/retevide/ultrasound/pocovidnet
     container_name: ddev-covidscreen-pocovidnet
     labels:
-      com.ddev.approot: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      com.ddev.approot: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       com.ddev.site-name: covidscreen
     ports:
     - published: 8000
       target: 8000
     volumes:
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/data:/data:rw
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev:/mnt/ddev_config:rw
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/data:/data:rw
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev:/mnt/ddev_config:rw
   redis:
     command:
     - redis-server
@@ -91,22 +91,22 @@ services:
     container_name: ddev-covidscreen-redis
     image: redis:4
     labels:
-      com.ddev.approot: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      com.ddev.approot: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       com.ddev.site-name: covidscreen
     ports:
     - target: 6379
     volumes:
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev:/mnt/ddev_config:rw
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/redis:/usr/local/etc/redis:rw
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev:/mnt/ddev_config:rw
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/redis:/usr/local/etc/redis:rw
   web:
     build:
       args:
         BASE_IMAGE: drud/ddev-webserver:v1.14.2
         gid: '20'
         uid: '501'
-        username: jroulin
-      context: /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/web-build
-      dockerfile: /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/.webimageBuild/Dockerfile
+        username: vijaydaita
+      context: /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/web-build
+      dockerfile: /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/.webimageBuild/Dockerfile
     cap_add:
     - SYS_PTRACE
     container_name: ddev-covidscreen-web
@@ -114,7 +114,7 @@ services:
     - pocovidnet
     - redis
     environment:
-      COLUMNS: '0'
+      COLUMNS: '225'
       DDEV_PHP_VERSION: '7.3'
       DDEV_PROJECT: covidscreen
       DDEV_PROJECT_TYPE: php
@@ -129,7 +129,7 @@ services:
       HTTPS_EXPOSE: 443:80,8026:8025
       HTTP_EXPOSE: 80:80,8025:8025
       IS_DDEV_PROJECT: "true"
-      LINES: '0'
+      LINES: '17'
       SSH_AUTH_SOCK: /home/.ssh-agent/socket
       TZ: ''
       VIRTUAL_HOST: covidscreen.ddev.site
@@ -144,7 +144,7 @@ services:
     image: drud/ddev-webserver:v1.14.2-covidscreen-built
     labels:
       com.ddev.app-type: php
-      com.ddev.approot: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      com.ddev.approot: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       com.ddev.platform: ddev
       com.ddev.site-name: covidscreen
     links:
@@ -157,12 +157,12 @@ services:
     restart: "no"
     user: '501:20'
     volumes:
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev/data:/data:rw
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev/data:/data:rw
     - ddev-ssh-agent_socket_dir:/home/.ssh-agent:rw
     - ddev-global-cache:/mnt/ddev-global-cache:rw
-    - /Users/jroulin/Dev/covid19_pocus_ultrasound/.ddev:/mnt/ddev_config:ro
+    - /Users/vijaydaita/Files/covid19/retevide/ultrasound/.ddev:/mnt/ddev_config:ro
     - consistency: cached
-      source: /Users/jroulin/Dev/covid19_pocus_ultrasound
+      source: /Users/vijaydaita/Files/covid19/retevide/ultrasound
       target: /var/www/html
       type: bind
 version: '3.6'
