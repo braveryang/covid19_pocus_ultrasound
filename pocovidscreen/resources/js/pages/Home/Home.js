@@ -39,6 +39,9 @@ const Home = () => {
         }
     };
 
+    const whiskMe = () => {
+        history.push("/screen_video")
+    }
     const hideDisclaimerModal = () => {
         setModalOpened(false);
     };
@@ -82,7 +85,7 @@ const Home = () => {
                 <div className="row">
                     <div
                         className="screen col-10 offset-1 col-sm-12 mb-5 mb-md-0 offset-sm-0 col-md-6 col-lg-5 offset-lg-1">
-                        <CallToAction onClick={showDisclaimerModalVideo} title="Screen Video"
+                        <CallToAction onClick={whiskMe} title="Screen Video"
                                       text="Use our AI to detect COVID-19, pneumonia or healthy patient from POCUS videos and view a heatmap of what the AI sees."
                                       linkTitle="Start video screening" className="primary"/>
                     </div>

@@ -19,7 +19,7 @@ const ScreenVideoResult = ({image, data, identifier}) => {
         let formData = new FormData();
         location.state.files.map((file) => {
             formData.append('video', file);
-            fetch('http://0.0.0.0:8000/video_predict', {
+            fetch('http://0.0.0.0:8081/video_predict', {
                 method: 'POST',
                 body: formData
             })
@@ -68,9 +68,9 @@ const ScreenVideoResult = ({image, data, identifier}) => {
 
     return (
         <div id={`key-${identifier}`} className={`result ${colorClass} d-md-flex mb-5`}>
-            {/* <div className="result-image">
+            <div className="result-image">
                 <video src={video.preview}/>
-            </div> */}
+            </div>
             <div className="result-information align-self-center px-5 py-4 mt-md-0 w-100">
                 <div className="result-information-part image-title">
                     <h3>Title</h3>
