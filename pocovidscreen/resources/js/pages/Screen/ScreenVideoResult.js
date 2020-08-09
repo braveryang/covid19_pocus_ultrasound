@@ -1,29 +1,38 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import Layout from '../Layout';
+import Text from '../../components/Content/Text';
+import {useLocation} from 'react-router-dom';
+import ScreenResult from './ScreenResult';
 import gsap from "gsap";
 
 const ScreenVideoResult = ({image, data, identifier}) => {
 
+    const location = useLocation();
     let results = '';
     let colorClass = '';
     let url = ''
+    var probability = 0;
+
+    const video = location.state.files[0];
 
     useEffect(() => {
         let formData = new FormData();
         location.state.files.map((file) => {
-            formData.append('image', file);
-            fetch('/pyapi/video_predict', {
+            formData.append('video', file);
+            fetch('http://0.0.0.0:8000/video_predict', {
                 method: 'POST',
                 body: formData
             })
             .then(data => data.json())
             .then(data => {
+                console.log(data)
                 image.preview = URL.createObjectURL(image);
                 res = JSON.parse(data.result.split("\n")[0]);
                 url = data.result.split("\n")[1]
                 
             
                 const maxValueIndex = res.indexOf(Math.max(...res));
-                const probability = Math.round(res[maxValueIndex] * 100);
+                probability = Math.round(res[maxValueIndex] * 100);
             
                 switch (maxValueIndex) {
                     case 0:
@@ -59,13 +68,13 @@ const ScreenVideoResult = ({image, data, identifier}) => {
 
     return (
         <div id={`key-${identifier}`} className={`result ${colorClass} d-md-flex mb-5`}>
-            <div className="result-image">
-                <img src={image.preview} alt={`Result for ${image.path}`}/>
-            </div>
+            {/* <div className="result-image">
+                <video src={video.preview}/>
+            </div> */}
             <div className="result-information align-self-center px-5 py-4 mt-md-0 w-100">
                 <div className="result-information-part image-title">
                     <h3>Title</h3>
-                    <p>{image.path}</p>
+                    <p>{video.path}</p>
                 </div>
                 <div className="result-information-part symptoms">
                     <h3 className="mt-4">Results</h3>

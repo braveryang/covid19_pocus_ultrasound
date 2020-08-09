@@ -25,25 +25,28 @@ const ScreenVideo = () => {
         files.forEach(file => URL.revokeObjectURL(file.preview));
     }, [files]);
 
+    var thumbs = "";
+
     const {getRootProps, getInputProps, open} = useDropzone({
-        accept: 'video/mp4, video/mov',
+        accept: 'video/mov, video/mp4',
         noClick: true,
         multiple: true,
         noKeyboard: true,
         onDrop: acceptedFiles => {
+            console.log(acceptedFiles);
             setFiles(acceptedFiles.map(file => Object.assign(file, {
                 preview: URL.createObjectURL(file)
             })));
+            console.log("x")
+            thumbs = acceptedFiles.map(file => (
+                <div className="thumb" key={file.name}>
+                    <div className="thumb-inner">
+                        <video src={file.preview}/>
+                    </div>
+                </div>
+            ));
         }
     });
-
-    const thumbs = files.map(file => (
-        <div className="thumb" key={file.name}>
-            <div className="thumb-inner">
-                <img src={file.preview}/>
-            </div>
-        </div>
-    ));
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -58,7 +61,7 @@ const ScreenVideo = () => {
             <Helmet>
                 <title>Screen - {configuration.appTitle}</title>
             </Helmet>
-            <Teaser additionalClass="small" teaser="Select the video you want to analyze"/>
+            <Teaser additionalClass="small" teaser="Select the videos you want to analyse"/>
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <div className="row">
