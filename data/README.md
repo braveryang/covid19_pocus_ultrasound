@@ -33,6 +33,7 @@ For more information and comments by medical experts, see our [metadata](https:/
 - We are constantly updating the dataset with new data - any contributions are appreciated!
 
 ## Updates
+- **24.10.2020**: Dataset metadata (patient age, gender, symptoms, ID, etc.) included (see #58).
 - **26.9.2020**: Major update to the database: 30 videos from Dr Avinash Aujayeb from Northumbria, and 45 linear videos of COVID-19 patients sponsored by Bolzano AG
 - **25.8.2020**: Update - added 10 new videos from the Northumbria hospital
 - **12.8.2020**: Update - added 14 new COVID videos from publications
