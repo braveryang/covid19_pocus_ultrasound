@@ -25,7 +25,7 @@ assembled from donations from hospitals as well as publicly available resources 
   - 20 videos from the Butterfly dataset (18 COVID, 2 healthy, see below how to use the provided scripts to process the data)
   - 53 images (18x COVID, 20x bacterial pneumonia, 15x healthy)
 - Linear:
-  - 20 videos (5x COVID, 2x bacterial pneumonia, 10x healthy, 3x viral pneumonia)
+  - 20 videos (6x COVID, 2x bacterial pneumonia, 9x healthy, 3x viral pneumonia)
   - 6 images (4x COVID, 2x bacterial pneumonia)
   - 45 videos of *possible* COVID-19 patients collected in Piacenza at the peak of the crisis in Italy; there were not enough PCR tests available, so the label is not clear
 For more information and comments by medical experts, see our [metadata](https://docs.google.com/spreadsheets/d/1t-tLMjMod6W-nAjkuxmO0CLsiyalFIOp92k_XD_yeo8/edit#gid=1181682638) sheet or metadata [csv](dataset_metadata.csv).
